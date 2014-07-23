@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag "component.css" %>
+<%= stylesheet_link_tag "default.css" %>
+<%= stylesheet_link_tag "style.css" %>
+<%= stylesheet_link_tag "style_modal.css" %>
+
+<style type="text/css">
+  body {
+    background:url('/assets/unknown.jpg'),#E2E1E1;
+    background-position:top ; 
+    background-repeat:no-repeat;
+  }
+  .left_image {
+    float: left;
+    margin-left: -32px;
+    margin-top: 198px;
+  }
+</style>
+
+ <div class="left_image" align="center" >
+  <%=image_tag "Screen.png", :width => "120px" %>
+</div>
+<mainsection>
+<sectionboxcart style="background:#efefef; height:230px; padding:15px 0 0 0" align="center">
+    <center><%=image_tag "2.png", :width => "320" %>
+    </center>
+    <div class="div-transparent">
+					<div class="div-transparent1" align="left">"RH2 COMBO"</div>
+					<div class="div-transparent2" align="right">
+					<br>
+						<button class="btn-grey">Buy</button>
+					</div>
+					<div style="clear: both">&nbsp;</div>
+				</div>
+  </sectionboxcart>
+  <div style="clear: both">&nbsp;</div>
+  <section class="check"><a href="/products">Shop</a></section>
+   <div class="cart"><a href="/shopping/cart_items">
+        <%=image_tag "cart.png", :alt => "cart" %>
+      </a> </div>
+  
+</mainsection>

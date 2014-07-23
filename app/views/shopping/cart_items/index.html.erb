@@ -1,0 +1,52 @@
+<%= stylesheet_link_tag "component.css" %>
+<%= stylesheet_link_tag "default.css" %>
+<%= stylesheet_link_tag "style.css" %>
+<%= stylesheet_link_tag "style_modal.css" %>
+
+<style type="text/css">
+  body {
+    background:url('/assets/unknown.jpg'),#E2E1E1;
+    background-position:top ; 
+    background-repeat:no-repeat;
+  }
+  .left_image {
+    float: left;
+    margin-left: -32px;
+    margin-top: 198px;
+  }
+</style>
+
+ <div class="left_image" align="center" >
+  <%=image_tag "Screen.png", :width => "120px" %>
+</div>
+<mainsection>
+<%= form_for session_cart, url: shopping_cart_item_path(session_cart), html: {class: 'custom'}, :as => :cart do |cart_form| %>
+
+  <sectionboxcart>
+    <hgroup>
+      <h1>Items</h1>
+    </hgroup>
+    <% @total_price = 0%>
+    <% @cart_items.each_with_index do |item, i| %>
+      <%= cart_form.fields_for :shopping_cart_items, item do |cart_items_form| %>
+        <article>
+          <p><%=item.variant.product_name%> <%=  item.variant.brand_name.blank? ? '' : ['-', item.variant.brand_name].join(' ') %><br>
+          <% @total_price = @total_price + item.price.to_i%>
+          <span><%= number_to_currency item.price %></span></p>
+          <p><%= image_tag item.variant.featured_image %></p>
+        </article>
+        <hr>
+      <%end%>
+    <%end%>
+    <p class="total"><%=number_to_currency @total_price%></p>
+  </sectionboxcart>
+
+  <sectionboxcart class="check">
+    <%= cart_form.submit 'checkout', {:checkout => 1,:class => 'small button success'} %>
+  </sectionboxcart>
+  <sectionboxcart class="continue"><a href="/products">Continue</a></sectionboxcart>
+  <div class="cart"><a href="/shopping/cart_items">
+        <%=image_tag "cart.png", :alt => "cart" %>
+      </a> </div>
+</mainsection>
+<%end%>

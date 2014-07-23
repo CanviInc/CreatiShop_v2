@@ -1,0 +1,1 @@
+jQuery(document).ready(function(e){var t=1;$countries_select=e("#countries_select"),$countries_select.on("change",function(){t=$countries_select.val();var c=e("#activate-link"),r=c.attr("href").replace(/(\/+[0-9]{1,9})$/,"/"+t);c.attr("href",r).click()})});
