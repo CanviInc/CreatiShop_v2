@@ -97,3 +97,5 @@ end
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'unf' 
+gem 'bcrypt'
+gem 'scrypt'
