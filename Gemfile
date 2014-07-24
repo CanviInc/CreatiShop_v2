@@ -13,7 +13,7 @@ gem "american_date"
 
 # Use https if you are pushing to HEROKU
 ##  NOTE: run the test before upgrading to the tagged version. It has had several deprecation warnings.
-gem 'authlogic', github: 'binarylogic/authlogic', ref: 'e4b2990d6282f3f7b50249b4f639631aef68b939'
+gem 'authlogic'#, github: 'binarylogic/authlogic', ref: 'e4b2990d6282f3f7b50249b4f639631aef68b939'
 #gem 'authlogic',          "~> 3.3.0"
 
 gem "asset_sync"
