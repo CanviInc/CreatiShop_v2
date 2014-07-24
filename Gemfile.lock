@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/binarylogic/authlogic.git
-  revision: e4b2990d6282f3f7b50249b4f639631aef68b939
-  ref: e4b2990d6282f3f7b50249b4f639631aef68b939
-  specs:
-    authlogic (3.3.0)
-      activerecord (>= 3.2)
-      activesupport (>= 3.2)
-
-GIT
   remote: https://github.com/Compass/compass-rails.git
   revision: ab84a09c0b84cc979e78540be7bfcb386ef5047d
   specs:
@@ -73,6 +64,10 @@ GEM
     asset_sync (1.0.0)
       activemodel
       fog (>= 1.8.0)
+    authlogic (3.4.2)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      request_store (~> 1.0)
     autotest-rails-pure (4.1.2)
     awesome_nested_set (3.0.0.rc.3)
       activerecord (>= 4.0.0, < 5)
@@ -237,6 +232,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.2.2)
     ref (1.0.5)
+    request_store (1.0.7)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rmagick (2.13.2)
@@ -314,7 +310,7 @@ DEPENDENCIES
   activemerchant (~> 1.42.5)
   american_date
   asset_sync
-  authlogic!
+  authlogic
   autotest-rails-pure
   awesome_nested_set (~> 3.0.0.rc.1)
   aws-sdk
