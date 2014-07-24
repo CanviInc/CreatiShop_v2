@@ -143,6 +143,7 @@ Hadean::Application.configure do
     #  :password  => Settings.braintree.password
     #)
   end
+
   PAPERCLIP_STORAGE_OPTS = {  :styles => {:mini => '48x48>',
                                           :small => '100x100>',
                                           :medium   => '200x200>',
@@ -150,5 +151,9 @@ Hadean::Application.configure do
                                           :large => '600x600>' },
                               :default_style => :product,
                               :url => "/assets/products/:id/:style/:basename.:extension",
-                              :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension" }
+                              :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension",
+                              access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+                              secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+                              bucket: ENV['FOG_DIRECTORY']
+                               }
 end
