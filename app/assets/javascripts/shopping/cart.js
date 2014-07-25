@@ -9,7 +9,7 @@ if (typeof Hadean.Cart.newForm == "undefined") {
     addToCart : true,
 
     initialize      : function() {
-      jQuery('#submit_add_to_cart').click( function() {
+      jQuery('#submit_add_to_cart').on('click', function() {
           if (jQuery('#cart_item_variant_id').val() == '' ) { // Select to see if variant is selected in hidden field
             alert('Please click on a specific item to add.');
           } else
@@ -22,7 +22,7 @@ if (typeof Hadean.Cart.newForm == "undefined") {
         }
       )
       // This code is to change the color of the selected and non-selected variants
-      jQuery('.variant_select').click( function() {
+      jQuery('.variant_select').on('click', function() {
 
           jQuery('.variant_properties').each( function(index, obj) {
             jQuery(obj).removeClass('selected');
