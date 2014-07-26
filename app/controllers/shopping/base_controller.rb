@@ -54,7 +54,7 @@ class Shopping::BaseController < ApplicationController
 
   def find_or_create_order
     return @session_order if @session_order
-    if session[:order_id]
+    unless session[:order_id]
       @session_order = current_user.orders.include_checkout_objects.find(session[:order_id])
       create_order if !@session_order.in_progress?
     else
