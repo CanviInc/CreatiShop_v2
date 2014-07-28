@@ -99,3 +99,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'unf' 
 gem 'bcrypt'
 gem 'scrypt'
+
+# [remote "heroku"]
+#   url = git@heroku.com:jai-test-app.git
+#   fetch = +refs/heads/*:refs/remotes/heroku/*
