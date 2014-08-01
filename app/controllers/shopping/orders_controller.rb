@@ -91,10 +91,44 @@ class Shopping::OrdersController < Shopping::BaseController
     @credit_card ||= ActiveMerchant::Billing::CreditCard.new()
     @order.credited_total
   end
-  def require_login
+
+  def require_login    
+    current_user = find_or_create_user unless current_user    
     if !current_user
       session[:return_to] = shopping_orders_url
       redirect_to( login_url() ) and return
+    end
+  end
+
+  def find_or_create_user
+    user = User.find_by_access_token(cookies[:hadean_uid])
+    unless user
+      user = User.create!(:first_name=>"guest",:last_name=>"user",:email=>"guest#{User.last.id}@user.com",:account_id=>6,:password=>"guestuser",:password_confirmation=>"guestuser")
+      user_session = UserSession.new(:email => user.email, :password => 'guestuser')
+      user_session.save
+      set_user_to_cart_items(user)
+      cookies[:hadean_uid] = user.access_token
+      session[:authenticated_at] = Time.now
+      cookies[:insecure] = false
+      create_cart_item_for_guest_user(user)
+      user
+    end
+    user
+  end
+
+  def create_cart_item_for_guest_user(current_user)
+    session_cart.save if session_cart.new_record?
+    qty = params[:cart_item][:quantity].to_i
+    if cart_item = session_cart.add_variant(params[:cart_item][:variant_id], most_likely_user, qty)
+      session_cart.save_user(most_likely_user)
+    else
+      variant = Variant.includes(:product).find_by_id(params[:cart_item][:variant_id])
+      if variant
+        redirect_to(product_url(variant.product))
+      else
+        flash[:notice] = I18n.t('something_went_wrong')
+        redirect_to(root_url())
+      end
     end
   end
 

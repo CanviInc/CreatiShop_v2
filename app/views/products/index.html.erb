@@ -39,9 +39,10 @@
 
 <!-- Modal product click -->
 <div class="md-modal md-effect-jt" id="modal-j1">
-  <%= form_for  @cart_item, :url=>shopping_cart_items_path(@cart_item),
-      :html => { :id => 'new_cart_item', :class => 'custom' } do |f| %>
+  <%= form_for  @cart_item, :url=>"/shopping/orders/checkout/checkout",
+      :html => { :id => 'new_cart_item', :class => 'custom' },:method=>:get do |f| %>
     <%= f.hidden_field :variant_id %>
+    <%= f.hidden_field :quantity,:value=>1 %>
     <div class="md-content modal-j-bg">
       <div class="div-close">
         <span class="md-close on-close">

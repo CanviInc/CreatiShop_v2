@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'application'
-
+  
   helper_method :current_user,
                 :current_user_id,
                 :most_likely_user,

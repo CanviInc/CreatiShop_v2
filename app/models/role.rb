@@ -10,6 +10,7 @@ class Role < ActiveRecord::Base
   WAREHOUSE         = 'warehouse'
   REPORT            = 'report'
   CUSTOMER_SERVICE  = 'customer_service'
+  GUEST             = 'Guest'
 
   ROLES = [ SUPER_ADMIN,
             ADMIN,

@@ -15,14 +15,14 @@
                 </div>
             </div>
           <% end %>
-          <ul class='ten large-10 side-nav'>
+          <ul class='ten large-10  side-nav'>
           <% items.first.shipping_rate_options(session_order.sub_total).each do |rate| %>
             <li><%= radio_button_tag "shipping_category[#{shipping_category_id}]", rate.id %> <%= rate.name_rate_min %></li>
           <% end %>
           </ul>
       </div>
     <% end %>
-    <div class='ten large-10 clearfix offset-by-two'>
+    <div class='ten clearfix offset-by-two'>
       <%= submit_tag 'continue', :class => 'button' %>
     </div>
 

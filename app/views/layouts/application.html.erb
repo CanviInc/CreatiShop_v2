@@ -69,14 +69,32 @@
   <%= yield :bottom %>
 
   <script>
-  jQuery(window).ready(
-    function() {
-      jQuery('.flash_notice').delay(6000).slideUp( 'slow');
-      jQuery('.flash_error').delay(6000).slideUp( 'slow');
-    }
-  );
-  </script>
+    jQuery(window).ready(
+      function() {
+        jQuery('.flash_notice').delay(6000).slideUp( 'slow');
+        jQuery('.flash_error').delay(6000).slideUp( 'slow');
+      }
+    );
 
+    function formValidate(){
+      if($('#email').val()==""){
+        alert("please enter a valid email id");
+        return false;
+      }
+      else if( !validateEmail($('#email').val())) { 
+          alert("please enter a valid email id");
+          return false;
+        }
+    }
+    function validateEmail($email) {
+      var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+      if( !emailReg.test( $email ) ) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  </script>
 </body>
   <%= yield :below_body %>
 </html>
